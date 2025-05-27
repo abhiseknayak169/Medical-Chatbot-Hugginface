@@ -1,0 +1,26 @@
+# Core App
+gradio
+python-dotenv
+
+# LangChain Ecosystem
+langchain
+langchain-core
+langchain-community
+langchain-huggingface
+
+# Embeddings & FAISS
+faiss-cpu
+sentence-transformers
+
+# PDF support
+pypdf
+
+# Transformers for HF Endpoint
+transformers
+huggingface-hub
+
+# Utilities
+tqdm
+urllib3
+requests
+PyYAML
