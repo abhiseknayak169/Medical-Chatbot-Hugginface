@@ -1,87 +1,102 @@
-🩺 Medical Guidelines Chatbot
-A conversational assistant that answers questions from uploaded medical PDF guidelines using LangChain, Hugging Face LLMs, FAISS vectorstore, and Gradio UI — with memory and source chunk traceability.
+# 🩺 Medical Guidelines Chatbot
 
-✅ Upload any clinical guideline
-✅ Ask multi-turn questions
-✅ Answers are grounded in PDF content only
-✅ Cites source chunks for transparency
-✅ No hallucinations — includes fallback logic
+This is an AI-powered chatbot that answers questions from uploaded medical guideline PDFs using Hugging Face LLMs, LangChain, FAISS vector search, and Gradio. It supports conversational memory, answer traceability, and accurate grounding in source content.
 
-🔧 Features
-✅ Upload PDF guidelines dynamically
+---
 
-✅ Automatically chunk, embed, and store in FAISS
+## 🚀 Features
 
-✅ Conversational memory (ConversationBufferMemory)
+* 📄 Upload your own medical guideline PDF (e.g. ICMR, WHO, NACO)
+* 🔍 Ask clinical questions and receive fact-grounded answers
+* 🧠 Conversation memory using LangChain's `ConversationBufferMemory`
+* 📚 FAISS vector store for fast document retrieval
+* ✅ Source chunk display for transparency
+* 🤖 Hugging Face model support (tested with Zephyr 7B)
+* 🧾 Safe fallback: "This information is not available in the current guidelines"
 
-✅ Hugging Face Inference API (Zephyr/Mistral/etc.)
+---
 
-✅ Highlights source context chunks used in answers
+## 🧑‍💻 How to Run Locally
 
-✅ Built with Gradio for a clean, chat-like UI
+### 1. Clone the repo
 
-✅ Safe fallback: “This information is not available in the current guidelines.”
+```bash
+git clone https://github.com/abhiseknayak169/Medical-Chatbot-Hugginface.git
+cd medical-chatbot
+```
 
-🚀 Getting Started
-1. Clone the repo
-bash
-Copy
-Edit
-git clone repository
-cd medical-guidelines-chatbot
-2. Create a .env file
-bash
-Copy
-Edit
-touch .env
-Add your Hugging Face token to the .env file:
+### 2. Install requirements
 
-env
-Copy
-Edit
-HF_TOKEN=your_huggingface_token_here
-3. Install dependencies
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
-4. Run the chatbot
-bash
-Copy
-Edit
+```
+
+### 3. Add your Hugging Face token
+
+Create a `.env` file:
+
+```bash
+echo "HF_TOKEN=your_token_here" > .env
+```
+
+### 4. Run the app
+
+```bash
 python app.py
-Then open your browser at: http://localhost:8080
+```
 
-📄 Project Structure
-bash
-Copy
-Edit
-.
-├── app.py                    # Gradio app with ConversationalRetrievalChain
-├── requirements.txt
-├── .env                      # Your Hugging Face token
+Then open [http://localhost:8080](http://localhost:7860)
+
+---
+
+## 🧾 Folder Structure
+
+```
+medical-chatbot/
+├── app.py                 # Gradio app with LangChain logic
+├── requirements.txt       # All dependencies
+├── .env                   # Hugging Face API token
 ├── src/
-│   ├── helper.py             # Embedding model loader
-│   └── prompt.py             # Custom prompts for rephrasing & answers
-└── vectorstore/              # Temporary FAISS DBs (optional)
-🧠 Example Usage
-Upload a file like ICMR_Treatment_Guidelines.pdf and ask:
+│   ├── helper.py          # Embedding model loader
+│   └── prompt.py          # Prompt templates for answering and question rewriting
+```
 
-plaintext
-Copy
-Edit
-💬 What is hospital acquired infection?
-💬 What organisms are responsible?
-💬 What is the treatment for complicated intra-abdominal infections?
-💬 What did I ask earlier?
-📦 To Deploy on Hugging Face Spaces
-If you want a public link:
+---
 
-Add share=True to demo.launch(...)
+## 📋 Example Usage
 
-Push this repo to Hugging Face with Space type Gradio (Python)
+1. Upload a PDF like `ICMR_Treatment_Guidelines.pdf`
+2. Ask:
 
-🙏 Disclaimer
-This is for educational purposes only and not medical advice.
-Always consult a healthcare professional before acting on any information.
+   * What is Hospital Acquired Infection?
+   * What are the causes of HAI?
+   * How is it diagnosed?
+3. See source chunks shown with the answer.
 
+---
+
+## ✅ Safety Note
+
+> *This tool is for **educational purposes only** and should **not** be used as a substitute for professional medical advice.*
+
+---
+
+## 🌐 Deploy to Hugging Face Spaces
+
+1. Push this code to a public repo
+2. Create a new **Gradio (Python)** Space
+3. Add your Hugging Face token as a secret `HF_TOKEN`
+4. Paste your app code and hit Deploy
+
+---
+
+## 🧠 Credits
+
+* [LangChain](https://python.langchain.com/)
+* [Gradio](https://gradio.app/)
+* [Hugging Face Transformers](https://huggingface.co/transformers/)
+* [ICMR, NACO, WHO PDFs](https://www.icmr.gov.in/)
+
+---
+
+Need help? Open an issue or ping me on Hugging Face!
